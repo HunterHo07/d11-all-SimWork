@@ -1,0 +1,441 @@
+.demoMain {
+  padding-top: 100px;
+  min-height: 100vh;
+  background: var(--darker);
+}
+
+.demoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.demoTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  background: var(--gradient-full);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.stepsProgress {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.stepsProgress::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.stepNumber {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--dark);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  transition: var(--transition-medium);
+}
+
+.stepLabel {
+  font-size: 0.9rem;
+  text-align: center;
+  max-width: 120px;
+  opacity: 0.7;
+  transition: var(--transition-medium);
+}
+
+.stepIndicator.active .stepNumber {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(110, 0, 255, 0.5);
+}
+
+.stepIndicator.active .stepLabel {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.stepIndicator.completed .stepNumber {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.stepContent {
+  background: var(--glass-dark);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stepTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.stepDescription {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.stepComponent {
+  margin-bottom: 2rem;
+}
+
+.stepNavigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prevButton, .nextButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.prevButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--light);
+}
+
+.prevButton:hover:not(:disabled) {
+  border-color: var(--light);
+}
+
+.nextButton {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+}
+
+.nextButton:hover:not(:disabled) {
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-2px);
+}
+
+.prevButton:disabled, .nextButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Role Selection Step */
+.roleSelection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.roleCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  border: 2px solid transparent;
+}
+
+.roleCard:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.roleCard.selected {
+  border-color: var(--accent);
+  background: rgba(0, 255, 136, 0.1);
+}
+
+.roleIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.roleCard h3 {
+  margin-bottom: 0.5rem;
+}
+
+.roleCard p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Simulation Step */
+.simulationStep {
+  margin-bottom: 2rem;
+}
+
+.simulationVisual {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.officeMap {
+  background: var(--dark);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+}
+
+.mapCell {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.playerCell {
+  background: rgba(110, 0, 255, 0.2);
+  box-shadow: 0 0 10px rgba(110, 0, 255, 0.3);
+}
+
+.stationCell {
+  background: rgba(0, 191, 255, 0.1);
+}
+
+.controls {
+  text-align: center;
+}
+
+.arrowKeys {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.arrowMiddle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrowUp, .arrowDown, .arrowLeft, .arrowRight {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.arrowUp:hover, .arrowDown:hover, .arrowLeft:hover, .arrowRight:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Tasks Step */
+.tasksStep {
+  margin-bottom: 2rem;
+}
+
+.taskInterface {
+  background: var(--dark);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.taskHeader {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskTimer {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.taskContent {
+  padding: 1rem;
+}
+
+.codeEditor {
+  background: #1e1e2e;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.editorHeader {
+  background: #2d2d3a;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.codeBlock {
+  padding: 1rem;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+.taskInstructions {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.taskInstructions h4 {
+  margin-bottom: 0.5rem;
+}
+
+.taskInstructions ol {
+  padding-left: 1.5rem;
+}
+
+.taskInstructions li {
+  margin-bottom: 0.5rem;
+}
+
+/* Performance Step */
+.performanceStep {
+  margin-bottom: 2rem;
+}
+
+.performanceCard {
+  background: var(--dark);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.performanceHeader {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  text-align: center;
+}
+
+.performanceMetrics {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.metricItem {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.metricLabel {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.metricValue {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient-accent);
+  border-radius: 4px;
+}
+
+.feedbackSection {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feedbackSection h4 {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .demoContainer {
+    padding: 1rem;
+  }
+  
+  .stepsProgress {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stepIndicator {
+    min-width: 80px;
+  }
+  
+  .stepContent {
+    padding: 1.5rem;
+  }
+  
+  .roleSelection {
+    grid-template-columns: 1fr;
+  }
+  
+  .performanceMetrics {
+    grid-template-columns: 1fr;
+  }
+}

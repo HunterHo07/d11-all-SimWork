@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6E00FF" />
+      <stop offset="50%" stop-color="#00BFFF" />
+      <stop offset="100%" stop-color="#00FF88" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Futuristic background elements -->
+  <rect x="10" y="15" width="30" height="30" rx="4" fill="url(#logoGradient)" opacity="0.8" />
+  <polygon points="20,10 40,20 30,40 10,30" fill="url(#logoGradient)" opacity="0.6" filter="url(#glow)" />
+  
+  <!-- Sim -->
+  <path d="M55,20 C55,18 56,16 58,15 C60,14 62,14 64,15 C66,16 67,18 67,20 C67,22 66,24 64,25 C62,26 60,26 58,25 C56,24 55,22 55,20 Z" fill="url(#logoGradient)" />
+  <path d="M70,15 L75,15 L75,35 L70,35 Z" fill="url(#logoGradient)" />
+  <path d="M80,15 C82,15 84,15 86,16 C88,17 89,18 90,20 C91,22 91,24 90,26 C89,28 88,29 86,30 C84,31 82,31 80,30 L80,35 L75,35 L75,15 L80,15 Z" fill="url(#logoGradient)" />
+  
+  <!-- Work -->
+  <path d="M95,15 L100,15 L103,30 L106,15 L111,15 L114,30 L117,15 L122,15 L117,35 L112,35 L109,20 L106,35 L101,35 L95,15 Z" fill="url(#logoGradient)" />
+  <path d="M125,15 C127,15 129,15 131,16 C133,17 134,18 135,20 C136,22 136,24 135,26 C134,28 133,29 131,30 C129,31 127,31 125,30 C123,29 122,28 121,26 C120,24 120,22 121,20 C122,18 123,17 125,16 C127,15 125,15 125,15 Z" fill="url(#logoGradient)" />
+  <path d="M140,15 L145,15 L145,20 C146,18 147,17 148,16 C149,15 151,15 152,15 L152,20 C150,20 148,21 147,22 C146,23 145,25 145,27 L145,35 L140,35 L140,15 Z" fill="url(#logoGradient)" />
+  <path d="M155,15 L160,15 L160,25 L165,20 L171,20 L165,26 L172,35 L166,35 L162,29 L160,31 L160,35 L155,35 L155,15 Z" fill="url(#logoGradient)" />
+  
+  <!-- Futuristic circuit lines -->
+  <path d="M10,45 L190,45" stroke="url(#logoGradient)" stroke-width="0.5" stroke-dasharray="1,2" />
+  <path d="M10,48 L190,48" stroke="url(#logoGradient)" stroke-width="0.5" stroke-dasharray="2,3" />
+  <path d="M10,51 L190,51" stroke="url(#logoGradient)" stroke-width="0.5" stroke-dasharray="3,4" />
+</svg>
