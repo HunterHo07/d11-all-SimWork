@@ -1,42 +1,68 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Phaser from 'phaser';
-import GameScene from './GameScene';
 import styles from './GameComponent.module.css';
+
+// We'll import GameScene and Phaser inside useEffect to ensure it only runs on client
 
 export default function GameComponent() {
   const gameRef = useRef(null);
   const gameContainerRef = useRef(null);
-  
+
   useEffect(() => {
-    if (!gameContainerRef.current) return;
-    
-    // Configuration for Phaser game
-    const config = {
-      type: Phaser.AUTO,
-      parent: gameContainerRef.current,
-      width: 800,
-      height: 600,
-      physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 0 },
-          debug: false
+    if (typeof window === 'undefined' || !gameContainerRef.current) return;
+
+    // Dynamically import Phaser and GameScene
+    const initGame = async () => {
+      try {
+        // Import Phaser and GameScene only on client side
+        const Phaser = (await import('phaser')).default;
+        const { default: GameScene } = await import('./GameScene');
+
+        // Configuration for Phaser game
+        const config = {
+          type: Phaser.AUTO,
+          parent: gameContainerRef.current,
+          width: 800,
+          height: 600,
+          physics: {
+            default: 'arcade',
+            arcade: {
+              gravity: { y: 0 },
+              debug: false
+            }
+          },
+          scene: [GameScene],
+          pixelArt: true,
+          scale: {
+            mode: Phaser.Scale.FIT,
+            autoCenter: Phaser.Scale.CENTER_BOTH
+          },
+          // Disable banner to reduce console output
+          banner: false
+        };
+
+        // Initialize the game
+        const game = new Phaser.Game(config);
+        gameRef.current = game;
+      } catch (error) {
+        console.error("Error initializing game:", error);
+
+        // Show error message in the game container
+        if (gameContainerRef.current) {
+          gameContainerRef.current.innerHTML = `
+            <div style="color: white; text-align: center; padding: 20px;">
+              <h3>Could not load simulation</h3>
+              <p>Please try refreshing the page</p>
+            </div>
+          `;
         }
-      },
-      scene: [GameScene],
-      pixelArt: true,
-      scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH
       }
     };
-    
+
     // Initialize the game
-    const game = new Phaser.Game(config);
-    gameRef.current = game;
-    
+    initGame();
+
     // Cleanup function
     return () => {
       if (gameRef.current) {
@@ -45,7 +71,7 @@ export default function GameComponent() {
       }
     };
   }, []);
-  
+
   return (
     <div className={styles.gameContainer} ref={gameContainerRef}>
       <div className={styles.gameOverlay}>

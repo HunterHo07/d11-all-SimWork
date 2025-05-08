@@ -1,0 +1,319 @@
+{
+  "dev": [
+    {
+      "id": "dev-1",
+      "title": "Debug the Authentication Function",
+      "description": "The user authentication function has a critical bug that allows anyone to log in. Find and fix the issue.",
+      "difficulty": "medium",
+      "timeLimit": 900,
+      "points": 100,
+      "code": "function authenticateUser(username, password) {\n  // Bug: Function always returns true regardless of input\n  return true;\n  \n  // Expected behavior:\n  // 1. Check if username exists in database\n  // 2. Verify password hash matches stored hash\n  // 3. Return authentication result\n}",
+      "solution": "function authenticateUser(username, password) {\n  // Check if username exists\n  const user = findUserByUsername(username);\n  if (!user) return false;\n  \n  // Verify password\n  const passwordMatch = verifyPassword(password, user.passwordHash);\n  return passwordMatch;\n}"
+    },
+    {
+      "id": "dev-2",
+      "title": "Optimize Database Query",
+      "description": "The current query is causing performance issues. Refactor it to improve efficiency.",
+      "difficulty": "hard",
+      "timeLimit": 1200,
+      "points": 150,
+      "code": "function getUserData(userId) {\n  // Inefficient query - fetches all users then filters\n  const allUsers = db.query('SELECT * FROM users');\n  const user = allUsers.find(u => u.id === userId);\n  \n  // Get all user posts\n  const allPosts = db.query('SELECT * FROM posts');\n  const userPosts = allPosts.filter(p => p.userId === userId);\n  \n  return { user, posts: userPosts };\n}",
+      "solution": "function getUserData(userId) {\n  // Direct query with WHERE clause\n  const user = db.query('SELECT * FROM users WHERE id = ?', [userId]);\n  \n  // Get only this user's posts\n  const userPosts = db.query('SELECT * FROM posts WHERE userId = ?', [userId]);\n  \n  return { user, posts: userPosts };\n}"
+    },
+    {
+      "id": "dev-3",
+      "title": "Implement Form Validation",
+      "description": "Create a validation function for the registration form that checks all required fields.",
+      "difficulty": "easy",
+      "timeLimit": 600,
+      "points": 75,
+      "code": "function validateRegistrationForm(formData) {\n  // TODO: Implement validation logic\n  // Required fields: username, email, password, confirmPassword\n  // Username: 3-20 characters, alphanumeric\n  // Email: Valid email format\n  // Password: 8+ characters, must contain number and special character\n  // ConfirmPassword: Must match password\n  \n  return true; // Currently accepts any input\n}",
+      "solution": "function validateRegistrationForm(formData) {\n  const errors = {};\n  \n  // Username validation\n  if (!formData.username || !/^[a-zA-Z0-9]{3,20}$/.test(formData.username)) {\n    errors.username = 'Username must be 3-20 alphanumeric characters';\n  }\n  \n  // Email validation\n  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  if (!formData.email || !emailRegex.test(formData.email)) {\n    errors.email = 'Please enter a valid email address';\n  }\n  \n  // Password validation\n  const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;\n  if (!formData.password || !passwordRegex.test(formData.password)) {\n    errors.password = 'Password must be 8+ characters with at least one number and special character';\n  }\n  \n  // Confirm password\n  if (formData.password !== formData.confirmPassword) {\n    errors.confirmPassword = 'Passwords do not match';\n  }\n  \n  return Object.keys(errors).length === 0 ? true : errors;\n}"
+    }
+  ],
+  "design": [
+    {
+      "id": "design-1",
+      "title": "Create App Icon Set",
+      "description": "Design a set of app icons for different platforms following the brand guidelines.",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "points": 100,
+      "requirements": [
+        "Follow brand colors: Primary #6E00FF, Secondary #00BFFF, Accent #00FF88",
+        "Create icons for iOS (1024x1024px) and Android (512x512px)",
+        "Design should be simple and recognizable at small sizes",
+        "Include the company 'S' lettermark in the design"
+      ]
+    },
+    {
+      "id": "design-2",
+      "title": "Redesign Landing Page",
+      "description": "The current landing page has poor conversion rates. Redesign it to improve user engagement.",
+      "difficulty": "hard",
+      "timeLimit": 1800,
+      "points": 150,
+      "requirements": [
+        "Emphasize the main value proposition",
+        "Improve visual hierarchy",
+        "Add clear call-to-action buttons",
+        "Ensure responsive design for mobile and desktop",
+        "Maintain brand identity while refreshing the look"
+      ]
+    },
+    {
+      "id": "design-3",
+      "title": "Create Onboarding Illustrations",
+      "description": "Design a set of illustrations for the app onboarding process that explain key features.",
+      "difficulty": "medium",
+      "timeLimit": 1500,
+      "points": 125,
+      "requirements": [
+        "Create 4 illustrations for different onboarding screens",
+        "Use the brand color palette",
+        "Illustrations should be simple and communicate the feature clearly",
+        "Consistent style across all illustrations",
+        "Export in SVG format"
+      ]
+    }
+  ],
+  "pm": [
+    {
+      "id": "pm-1",
+      "title": "Create Sprint Plan",
+      "description": "Develop a two-week sprint plan for the team based on the current backlog.",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "points": 100,
+      "backlog": [
+        { "id": "FEAT-101", "title": "User Authentication", "points": 8, "priority": "High" },
+        { "id": "FEAT-102", "title": "Dashboard Redesign", "points": 13, "priority": "Medium" },
+        { "id": "BUG-103", "title": "Fix Payment Processing Error", "points": 5, "priority": "Critical" },
+        { "id": "FEAT-104", "title": "Add Export to CSV Feature", "points": 5, "priority": "Low" },
+        { "id": "TECH-105", "title": "Database Optimization", "points": 8, "priority": "High" },
+        { "id": "BUG-106", "title": "Mobile Navigation Bug", "points": 3, "priority": "Medium" },
+        { "id": "FEAT-107", "title": "User Profile Settings", "points": 8, "priority": "Medium" },
+        { "id": "FEAT-108", "title": "Notification System", "points": 13, "priority": "Low" }
+      ],
+      "teamCapacity": 30
+    },
+    {
+      "id": "pm-2",
+      "title": "Prioritize Feature Requests",
+      "description": "Analyze and prioritize incoming feature requests based on business value and effort.",
+      "difficulty": "hard",
+      "timeLimit": 1500,
+      "points": 150,
+      "features": [
+        {
+          "id": "FR-201",
+          "title": "Dark Mode",
+          "description": "Add dark mode option to reduce eye strain",
+          "requestedBy": "UX Team",
+          "userImpact": "Medium",
+          "effortEstimate": "Medium"
+        },
+        {
+          "id": "FR-202",
+          "title": "Multi-factor Authentication",
+          "description": "Add additional security layer for user accounts",
+          "requestedBy": "Security Team",
+          "userImpact": "Low",
+          "effortEstimate": "High"
+        },
+        {
+          "id": "FR-203",
+          "title": "Bulk Import Tool",
+          "description": "Allow users to import data in bulk via CSV",
+          "requestedBy": "Enterprise Customer",
+          "userImpact": "High",
+          "effortEstimate": "Medium"
+        },
+        {
+          "id": "FR-204",
+          "title": "Performance Dashboard",
+          "description": "Create dashboard showing key performance metrics",
+          "requestedBy": "Executive Team",
+          "userImpact": "High",
+          "effortEstimate": "High"
+        },
+        {
+          "id": "FR-205",
+          "title": "Keyboard Shortcuts",
+          "description": "Add keyboard shortcuts for power users",
+          "requestedBy": "UX Team",
+          "userImpact": "Low",
+          "effortEstimate": "Low"
+        }
+      ]
+    },
+    {
+      "id": "pm-3",
+      "title": "Create Project Timeline",
+      "description": "Develop a project timeline for the new product launch with key milestones.",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "points": 125,
+      "projectDetails": {
+        "name": "Mobile App Launch",
+        "startDate": "2023-06-01",
+        "targetLaunchDate": "2023-09-15",
+        "phases": [
+          "Requirements Gathering",
+          "Design",
+          "Development",
+          "Testing",
+          "Beta Release",
+          "Marketing Campaign",
+          "Public Launch"
+        ],
+        "constraints": [
+          "Design team is only available starting June 15",
+          "QA team has limited capacity in August",
+          "Marketing materials need 3 weeks lead time",
+          "App store approval process takes up to 2 weeks"
+        ]
+      }
+    }
+  ],
+  "data": [
+    {
+      "id": "data-1",
+      "title": "Clean Customer Dataset",
+      "description": "The customer dataset has duplicate entries and formatting issues. Clean and normalize the data.",
+      "difficulty": "medium",
+      "timeLimit": 900,
+      "points": 100,
+      "dataset": [
+        { "id": "1", "name": "John Smith", "email": "john.smith@example.com", "phone": "555-123-4567", "signup_date": "2022-01-15" },
+        { "id": "2", "name": "Jane Doe", "email": "jane.doe@example.com", "phone": "(555) 987-6543", "signup_date": "01/30/2022" },
+        { "id": "3", "name": "John Smith", "email": "johnsmith@example.com", "phone": "5551234567", "signup_date": "2022-01-15" },
+        { "id": "4", "name": "Robert Johnson", "email": "robert.johnson@example.com", "phone": "555.789.0123", "signup_date": "02/15/2022" },
+        { "id": "5", "name": "Sarah Williams", "email": "sarah.williams@example.com", "phone": "555-456-7890", "signup_date": "2022-03-10" },
+        { "id": "6", "name": "JANE DOE", "email": "jane.doe@example.com", "phone": "555-987-6543", "signup_date": "2022-01-30" }
+      ]
+    },
+    {
+      "id": "data-2",
+      "title": "Enter Quarterly Sales Figures",
+      "description": "Enter the quarterly sales figures from the provided reports into the system.",
+      "difficulty": "easy",
+      "timeLimit": 600,
+      "points": 75,
+      "salesData": {
+        "Q1": {
+          "Product A": { "units": 1250, "revenue": 125000 },
+          "Product B": { "units": 875, "revenue": 131250 },
+          "Product C": { "units": 450, "revenue": 90000 }
+        },
+        "Q2": {
+          "Product A": { "units": 1375, "revenue": 137500 },
+          "Product B": { "units": 925, "revenue": 138750 },
+          "Product C": { "units": 525, "revenue": 105000 }
+        },
+        "Q3": {
+          "Product A": { "units": 1500, "revenue": 150000 },
+          "Product B": { "units": 1050, "revenue": 157500 },
+          "Product C": { "units": 600, "revenue": 120000 }
+        },
+        "Q4": {
+          "Product A": { "units": 1750, "revenue": 175000 },
+          "Product B": { "units": 1200, "revenue": 180000 },
+          "Product C": { "units": 700, "revenue": 140000 }
+        }
+      }
+    },
+    {
+      "id": "data-3",
+      "title": "Analyze Customer Churn",
+      "description": "Analyze the customer churn data and identify patterns or factors contributing to churn.",
+      "difficulty": "hard",
+      "timeLimit": 1500,
+      "points": 150,
+      "churnData": {
+        "totalCustomers": 10000,
+        "churnRate": 0.15,
+        "timeframe": "Q2 2023",
+        "segments": [
+          { "segment": "Free Tier", "churnRate": 0.22, "avgTimeBeforeChurn": "45 days" },
+          { "segment": "Basic Plan", "churnRate": 0.15, "avgTimeBeforeChurn": "90 days" },
+          { "segment": "Premium Plan", "churnRate": 0.08, "avgTimeBeforeChurn": "180 days" },
+          { "segment": "Enterprise", "churnRate": 0.05, "avgTimeBeforeChurn": "365+ days" }
+        ],
+        "surveyResponses": [
+          { "reason": "Price too high", "percentage": 35 },
+          { "reason": "Missing features", "percentage": 25 },
+          { "reason": "Poor customer support", "percentage": 15 },
+          { "reason": "Found better alternative", "percentage": 20 },
+          { "reason": "Other", "percentage": 5 }
+        ]
+      }
+    }
+  ],
+  "ai": [
+    {
+      "id": "ai-1",
+      "title": "Train Sentiment Analysis Model",
+      "description": "Train a sentiment analysis model to classify customer feedback as positive, negative, or neutral.",
+      "difficulty": "hard",
+      "timeLimit": 1800,
+      "points": 150,
+      "dataset": {
+        "trainingSize": 5000,
+        "testingSize": 1000,
+        "distribution": {
+          "positive": 0.4,
+          "negative": 0.3,
+          "neutral": 0.3
+        },
+        "features": [
+          "text content",
+          "word count",
+          "punctuation patterns",
+          "emoji usage"
+        ],
+        "targetAccuracy": 0.85
+      }
+    },
+    {
+      "id": "ai-2",
+      "title": "Debug Recommendation Algorithm",
+      "description": "The product recommendation algorithm is producing unexpected results. Debug and fix the issues.",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "points": 125,
+      "code": "def recommend_products(user_id, n=5):\n    # Get user purchase history\n    history = get_user_purchases(user_id)\n    \n    # Get product categories from history\n    categories = [product['category'] for product in history]\n    \n    # Bug: Only recommends from the first category found\n    target_category = categories[0]\n    \n    # Get popular products in that category\n    recommendations = get_popular_products(category=target_category, limit=n)\n    \n    # Bug: Doesn't filter out products the user already purchased\n    return recommendations",
+      "solution": "def recommend_products(user_id, n=5):\n    # Get user purchase history\n    history = get_user_purchases(user_id)\n    \n    # Get product categories from history and count frequency\n    category_counts = {}\n    for product in history:\n        category = product['category']\n        category_counts[category] = category_counts.get(category, 0) + 1\n    \n    # Sort categories by frequency\n    sorted_categories = sorted(category_counts.items(), key=lambda x: x[1], reverse=True)\n    \n    # Get purchased product IDs for filtering\n    purchased_ids = {product['id'] for product in history}\n    \n    # Get recommendations across multiple categories\n    recommendations = []\n    for category, _ in sorted_categories:\n        # Get popular products in this category that user hasn't purchased\n        category_recs = [p for p in get_popular_products(category=category, limit=n*2) \n                        if p['id'] not in purchased_ids]\n        recommendations.extend(category_recs)\n        if len(recommendations) >= n:\n            break\n    \n    # Return top N recommendations\n    return recommendations[:n]"
+    },
+    {
+      "id": "ai-3",
+      "title": "Implement Chatbot Intent Recognition",
+      "description": "Create a function that identifies user intent from chat messages to route to the appropriate response.",
+      "difficulty": "medium",
+      "timeLimit": 1500,
+      "points": 100,
+      "intents": [
+        {
+          "name": "greeting",
+          "examples": ["hello", "hi", "hey there", "good morning", "greetings"]
+        },
+        {
+          "name": "help",
+          "examples": ["help me", "I need assistance", "support please", "can you help"]
+        },
+        {
+          "name": "order_status",
+          "examples": ["where is my order", "track package", "order status", "when will my order arrive"]
+        },
+        {
+          "name": "return_item",
+          "examples": ["return policy", "how to return", "I want to return", "can I get a refund"]
+        },
+        {
+          "name": "product_info",
+          "examples": ["tell me about", "product details", "specifications", "does it have"]
+        }
+      ]
+    }
+  ]
+}

@@ -18,13 +18,36 @@
   width: 100%;
   height: 600px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: var(--dark);
   border-radius: 8px;
   font-size: 1.2rem;
   color: var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.loadingText {
+  margin-bottom: 1.5rem;
   animation: pulse 2s infinite;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 255, 136, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Features Section */

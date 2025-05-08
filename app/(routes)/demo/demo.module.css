@@ -244,15 +244,29 @@
 }
 
 .arrowKeys {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: inline-grid;
+  grid-template-areas:
+    ". up ."
+    "left down right";
+  grid-template-columns: 50px 50px 50px;
+  grid-gap: 0.5rem;
   margin-top: 1rem;
 }
 
-.arrowMiddle {
-  display: flex;
-  gap: 0.5rem;
+.arrowUp {
+  grid-area: up;
+}
+
+.arrowLeft {
+  grid-area: left;
+}
+
+.arrowDown {
+  grid-area: down;
+}
+
+.arrowRight {
+  grid-area: right;
 }
 
 .arrowUp, .arrowDown, .arrowLeft, .arrowRight {
@@ -272,6 +286,28 @@
 .arrowUp:hover, .arrowDown:hover, .arrowLeft:hover, .arrowRight:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
+}
+
+.stationMessage {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease-in-out;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.successMessage {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Tasks Step */
@@ -416,25 +452,25 @@
   .demoContainer {
     padding: 1rem;
   }
-  
+
   .stepsProgress {
     overflow-x: auto;
     padding-bottom: 1rem;
     margin-bottom: 2rem;
   }
-  
+
   .stepIndicator {
     min-width: 80px;
   }
-  
+
   .stepContent {
     padding: 1.5rem;
   }
-  
+
   .roleSelection {
     grid-template-columns: 1fr;
   }
-  
+
   .performanceMetrics {
     grid-template-columns: 1fr;
   }

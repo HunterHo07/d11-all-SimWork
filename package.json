@@ -14,15 +14,15 @@
     "framer-motion": "^12.10.4",
     "gh-pages": "^6.3.0",
     "gsap": "^3.13.0",
-    "next": "15.3.2",
+    "next": "14.1.0",
     "phaser": "^3.88.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "three": "^0.176.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.2"
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0"
   }
 }

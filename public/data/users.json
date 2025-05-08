@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "name": "Alex Johnson",
+      "email": "alex@example.com",
+      "role": "developer",
+      "avatar": "👨‍💻",
+      "progress": {
+        "level": 3,
+        "xp": 1250,
+        "completedQuests": ["dev-1", "dev-3"],
+        "skills": {
+          "coding": 75,
+          "debugging": 80,
+          "optimization": 60
+        }
+      }
+    },
+    {
+      "id": "user-2",
+      "name": "Sarah Chen",
+      "email": "sarah@example.com",
+      "role": "designer",
+      "avatar": "👩‍🎨",
+      "progress": {
+        "level": 2,
+        "xp": 850,
+        "completedQuests": ["design-1"],
+        "skills": {
+          "ui": 70,
+          "ux": 65,
+          "illustration": 80
+        }
+      }
+    },
+    {
+      "id": "user-3",
+      "name": "Michael Rodriguez",
+      "email": "michael@example.com",
+      "role": "project_manager",
+      "avatar": "👨‍💼",
+      "progress": {
+        "level": 4,
+        "xp": 1800,
+        "completedQuests": ["pm-1", "pm-2", "pm-3"],
+        "skills": {
+          "planning": 85,
+          "communication": 90,
+          "risk_management": 75
+        }
+      }
+    },
+    {
+      "id": "user-4",
+      "name": "Emily Wilson",
+      "email": "emily@example.com",
+      "role": "data_entry",
+      "avatar": "👩‍💼",
+      "progress": {
+        "level": 2,
+        "xp": 750,
+        "completedQuests": ["data-1", "data-2"],
+        "skills": {
+          "accuracy": 85,
+          "speed": 70,
+          "attention_to_detail": 90
+        }
+      }
+    },
+    {
+      "id": "user-5",
+      "name": "David Kim",
+      "email": "david@example.com",
+      "role": "ai_engineer",
+      "avatar": "🧑‍🔬",
+      "progress": {
+        "level": 3,
+        "xp": 1350,
+        "completedQuests": ["ai-2"],
+        "skills": {
+          "machine_learning": 80,
+          "data_analysis": 75,
+          "algorithm_design": 85
+        }
+      }
+    }
+  ]
+}

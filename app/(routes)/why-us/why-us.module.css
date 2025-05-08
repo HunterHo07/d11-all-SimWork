@@ -1,0 +1,448 @@
+.whyUsMain {
+  padding-top: 80px;
+  background: var(--darker);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.heroSection {
+  padding: 6rem 0 4rem;
+  background: linear-gradient(to bottom, var(--darker), rgba(10, 10, 26, 0.8)), url('/images/grid-pattern.svg');
+  background-size: cover;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  margin-bottom: 1.5rem;
+  background: var(--gradient-full);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+/* Section Styles */
+.sectionTitle {
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.sectionSubtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Advantages Section */
+.advantagesSection {
+  padding: 6rem 0;
+}
+
+.comparisonTableContainer {
+  overflow-x: auto;
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+.comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  background: var(--glass-dark);
+  backdrop-filter: blur(10px);
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.comparisonTable th {
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.comparisonTable th:first-child {
+  width: 25%;
+}
+
+.comparisonTable tr:last-child td {
+  border-bottom: none;
+}
+
+.comparisonTable td.positive {
+  color: var(--accent);
+}
+
+.comparisonTable td.negative {
+  color: #ff5555;
+}
+
+.comparisonTable td.neutral {
+  color: #ffaa00;
+}
+
+/* Benefits Section */
+.benefitsSection {
+  padding: 6rem 0;
+  background: linear-gradient(to bottom, transparent, rgba(110, 0, 255, 0.05), transparent);
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.benefitCard {
+  background: var(--glass-dark);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-medium);
+  height: 100%;
+}
+
+.benefitCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-neon);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.benefitIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.benefitCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--light);
+}
+
+.benefitCard p {
+  color: var(--light);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Testimonials Section */
+.testimonialsSection {
+  padding: 6rem 0;
+}
+
+.testimonial {
+  display: flex;
+  margin-bottom: 4rem;
+  gap: 3rem;
+}
+
+.testimonial.reverse {
+  flex-direction: row-reverse;
+}
+
+.testimonialContent {
+  flex: 2;
+  position: relative;
+  background: var(--glass-dark);
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.quoteIcon {
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  font-size: 5rem;
+  color: var(--primary);
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.quote {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.authorInfo h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.authorInfo p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.testimonialImage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-neon);
+}
+
+.avatarPlaceholder {
+  font-size: 4rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* Pricing Section */
+.pricingSection {
+  padding: 6rem 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 191, 255, 0.05), transparent);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pricingCard {
+  background: var(--glass-dark);
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricingCard.popular {
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.popularBadge {
+  position: absolute;
+  top: 12px;
+  right: -30px;
+  background: var(--accent);
+  color: var(--dark);
+  padding: 0.5rem 2.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+}
+
+.pricingTier {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--light);
+}
+
+.pricingAmount {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--light);
+  display: flex;
+  align-items: flex-start;
+}
+
+.currency {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-right: 0.25rem;
+}
+
+.period {
+  font-size: 1rem;
+  opacity: 0.7;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-left: 0.25rem;
+}
+
+.pricingFeatures {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+
+.pricingFeatures li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.pricingFeatures li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.pricingFeatures li:last-child {
+  border-bottom: none;
+}
+
+.pricingCta {
+  width: 100%;
+  padding: 1rem;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.pricingCta:hover {
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-2px);
+}
+
+/* CTA Section */
+.ctaSection {
+  padding: 6rem 0;
+}
+
+.ctaCard {
+  background: var(--glass-dark);
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  background-image: linear-gradient(135deg, rgba(110, 0, 255, 0.1), rgba(0, 191, 255, 0.1));
+}
+
+.ctaCard h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1.5rem;
+  background: var(--gradient-full);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.ctaCard p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.8;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.primaryButton, .secondaryButton {
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.primaryButton {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+}
+
+.secondaryButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--light);
+}
+
+.primaryButton:hover {
+  box-shadow: var(--shadow-neon);
+  transform: translateY(-2px);
+}
+
+.secondaryButton:hover {
+  border-color: var(--light);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .testimonial {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .testimonial.reverse {
+    flex-direction: column;
+  }
+  
+  .testimonialImage {
+    order: -1;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .comparisonTable th,
+  .comparisonTable td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}

@@ -1,13 +1,7 @@
-import dynamic from 'next/dynamic';
 import styles from './page.module.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-
-// Dynamically import the GameComponent with SSR disabled
-const GameComponent = dynamic(() => import('./game/GameComponent'), {
-  ssr: false,
-  loading: () => <div className={styles.gameLoading}>Loading simulation...</div>
-});
+import GameWrapper from './components/GameWrapper';
 
 // Features component
 const Features = () => (
@@ -137,11 +131,11 @@ export default function Home() {
         <div className={styles.container}>
           <Features />
 
-          <section className={styles.gameSection}>
+          <section className={`${styles.gameSection} gameSection`}>
             <h2 className={styles.sectionTitle}>Try the Simulation</h2>
             <p className={styles.sectionSubtitle}>Experience our interactive office environment</p>
 
-            <GameComponent />
+            <GameWrapper />
           </section>
 
           <HowItWorks />

@@ -1,0 +1,3 @@
+app/(routes)/landing/page.js
+app/(routes)/pitch-deck/page.js
+app/(routes)/why-us/page.js
